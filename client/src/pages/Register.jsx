@@ -1,6 +1,6 @@
 import { Form, Link } from "react-router-dom";
 
-import { FormRow, Logo, SubmitBtn } from "../components";
+import { FormRow, Logo, SubmitBtn } from "../components/common";
 
 const Register = () => {
   return (
