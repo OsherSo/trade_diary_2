@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
 
 import customFetch from "../utils/customFetch";
@@ -8,8 +9,10 @@ const registerAction = async ({ request }) => {
 
   try {
     await customFetch.post("/auth/register", data);
+    toast.success("Registration successful");
     return redirect("/login");
   } catch (error) {
+    toast.error(error?.response?.data?.msg);
     return error;
   }
 };
