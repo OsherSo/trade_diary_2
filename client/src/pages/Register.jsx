@@ -1,22 +1,26 @@
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
-import { FormRow, Logo, SubmitBtn } from "../components/common";
+import { AuthHeader, SignupForm } from "../components/register";
 
 const Register = () => {
   return (
-    <Form method="post">
-      <Logo />
-      <h4>Register</h4>
-      <FormRow type="text" name="firstName" labelText="First Name" />
-      <FormRow type="text" name="lastName" labelText="Last Name" />
-      <FormRow type="email" name="email" labelText="Email" />
-      <FormRow type="password" name="password" labelText="Password" />
-      <SubmitBtn />
-      <p>
-        Already a member?
-        <Link to="/login">Login</Link>
-      </p>
-    </Form>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-lg shadow-sm p-8">
+          <AuthHeader />
+          <SignupForm />
+        </div>
+
+        <Link
+          to="/"
+          className="flex items-center justify-center mt-8 text-gray-600 hover:text-gray-800"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Home
+        </Link>
+      </div>
+    </div>
   );
 };
 
