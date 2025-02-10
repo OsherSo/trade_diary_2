@@ -11,9 +11,14 @@ const DashboardLayout = () => {
   const { user } = useLoaderData();
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
+  };
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
   };
 
   const logout = async () => {
@@ -27,18 +32,22 @@ const DashboardLayout = () => {
       value={{
         user,
         showSidebar,
+        isCollapsed,
         toggleSidebar,
+        toggleCollapse,
         logout,
       }}
     >
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen bg-gray-50 font-inter">
         <SmallSidebar />
         <BigSidebar />
         <div
-          className={`lg:ml-64 transition-all duration-300 ${showSidebar ? "" : "lg:ml-0"}`}
+          className={`transition-all duration-300 ${
+            showSidebar ? (isCollapsed ? "lg:ml-20" : "lg:ml-64") : "lg:ml-0"
+          }`}
         >
           <Navbar />
-          <div className="px-4 py-8 bg-gray-50 min-h-[calc(100vh-4rem)]">
+          <div className="p-6 min-h-[calc(100vh-4rem)]">
             <Outlet context={{ user }} />
           </div>
         </div>

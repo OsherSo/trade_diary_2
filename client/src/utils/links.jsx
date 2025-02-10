@@ -4,6 +4,8 @@ import {
   BookOpen,
   Settings,
   Users,
+  History,
+  Target,
 } from "lucide-react";
 
 const links = [
@@ -18,9 +20,19 @@ const links = [
     icon: <BookOpen className="w-5 h-5" />,
   },
   {
+    text: "Trade History",
+    path: "/dashboard/history",
+    icon: <History className="w-5 h-5" />,
+  },
+  {
     text: "Analytics",
     path: "/dashboard/analytics",
     icon: <LineChart className="w-5 h-5" />,
+  },
+  {
+    text: "Trading Goals",
+    path: "/dashboard/goals",
+    icon: <Target className="w-5 h-5" />,
   },
   {
     text: "Settings",
