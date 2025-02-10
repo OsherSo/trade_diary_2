@@ -1,5 +1,15 @@
+import { useRouteError } from "react-router-dom";
+
+import { NotFoundError, UnexpectedError } from "../components/error";
+
 const Error = () => {
-  return <h1 className="text-3xl font-bold underline">Error</h1>;
+  const error = useRouteError();
+
+  if (error.status === 404) {
+    return <NotFoundError />;
+  }
+
+  return <UnexpectedError message={error.message} />;
 };
 
 export default Error;
