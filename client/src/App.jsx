@@ -4,6 +4,7 @@ import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
 
 import dashboardLoader from "./loaders/dashboardLoader";
+import diariesLoader from "./loaders/diariesLoader";
 
 import {
   HomeLayout,
@@ -12,6 +13,7 @@ import {
   Login,
   DashboardLayout,
   Error,
+  Diaries,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -38,7 +40,13 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <DashboardLayout />,
         loader: dashboardLoader,
-        children: [],
+        children: [
+          {
+            path: "diaries",
+            element: <Diaries />,
+            loader: diariesLoader,
+          },
+        ],
       },
     ],
   },

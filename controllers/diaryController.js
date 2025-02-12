@@ -12,7 +12,6 @@ export const getAllDiaries = async (req, res) => {
 export const getDiary = async (req, res) => {
   const { id } = req.params;
   const diary = await diaryModel.findOne({ _id: id, user: req.user.userId });
-  // .populate("trades");
 
   if (!diary) {
     return res
@@ -30,7 +29,8 @@ export const createDiary = async (req, res) => {
 };
 
 export const updateDiary = async (req, res) => {
-  const diary = await diaryModel.findByIdAndUpdate(req.document._id, req.body, {
+  const { id } = req.params;
+  const diary = await diaryModel.findByIdAndUpdate(id, req.body, {
     new: true,
     runValidators: true,
   });
@@ -38,6 +38,7 @@ export const updateDiary = async (req, res) => {
 };
 
 export const deleteDiary = async (req, res) => {
-  await diaryModel.findByIdAndDelete(req.document._id);
+  const { id } = req.params;
+  await diaryModel.findByIdAndDelete(id);
   res.status(StatusCodes.NO_CONTENT).send();
 };

@@ -15,8 +15,8 @@ const links = [
     icon: <LayoutDashboard className="w-5 h-5" />,
   },
   {
-    text: "Trading Journal",
-    path: "/dashboard/journal",
+    text: "Diaries",
+    path: "/dashboard/diaries",
     icon: <BookOpen className="w-5 h-5" />,
   },
   {
