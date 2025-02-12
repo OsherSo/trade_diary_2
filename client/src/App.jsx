@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
 
+import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
 import diariesLoader from "./loaders/diariesLoader";
 
@@ -25,16 +26,19 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+        loader: authLoader,
       },
       {
         path: "register",
         element: <Register />,
         action: registerAction,
+        loader: authLoader,
       },
       {
         path: "login",
         element: <Login />,
         action: loginAction,
+        loader: authLoader,
       },
       {
         path: "dashboard",
