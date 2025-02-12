@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
 import addDiaryAction from "./actions/addDiaryAction";
+import deleteDiaryAction from "./actions/deleteDiaryAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                 path: "new",
                 element: <AddDiary />,
                 action: addDiaryAction,
+              },
+              {
+                path: "delete/:id",
+                action: deleteDiaryAction,
               },
             ],
           },
