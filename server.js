@@ -15,7 +15,7 @@ import { StatusCodes } from "http-status-codes";
 
 import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
-import diaryRouter from "./routes/journalRouter.js";
+import diaryRouter from "./routes/diaryRouter.js";
 
 import { PORT, FAIL } from "./utils/constants.js";
 
