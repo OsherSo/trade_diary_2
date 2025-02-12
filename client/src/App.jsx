@@ -4,10 +4,12 @@ import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
 import addDiaryAction from "./actions/addDiaryAction";
 import deleteDiaryAction from "./actions/deleteDiaryAction";
+import editDiaryAction from "./actions/editDiaryAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
 import diariesLoader from "./loaders/diariesLoader";
+import singleDiaryLoader from "./loaders/singleDiaryLoader";
 
 import {
   HomeLayout,
@@ -18,6 +20,7 @@ import {
   Error,
   Diaries,
   AddDiary,
+  EditDiary,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -57,6 +60,12 @@ const router = createBrowserRouter([
                 path: "new",
                 element: <AddDiary />,
                 action: addDiaryAction,
+              },
+              {
+                path: "edit/:id",
+                element: <EditDiary />,
+                action: editDiaryAction,
+                loader: singleDiaryLoader,
               },
               {
                 path: "delete/:id",

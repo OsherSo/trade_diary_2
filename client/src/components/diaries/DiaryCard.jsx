@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Edit2, Trash2, Calendar, Book } from "lucide-react";
 import { ActionBtn } from "../common";
 import ConfirmationDialog from "./ConfirmationDialog";
 
 const DiaryCard = ({ diary }) => {
+  const navigate = useNavigate();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const formatDate = (dateString) => {
@@ -12,6 +14,10 @@ const DiaryCard = ({ diary }) => {
       month: "short",
       day: "numeric",
     });
+  };
+
+  const handleEdit = () => {
+    navigate(`edit/${diary._id}`);
   };
 
   return (
@@ -29,7 +35,7 @@ const DiaryCard = ({ diary }) => {
           </div>
           <div className="flex gap-2">
             <ActionBtn
-              action={() => {}}
+              action={handleEdit}
               style="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-200"
             >
               <Edit2 className="w-4 h-4" />
