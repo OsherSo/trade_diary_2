@@ -1,11 +1,12 @@
+import { useLoaderData, Outlet } from "react-router-dom";
+
 import { DiariesHeader, DiaryCard, EmptyPage } from "../components/diaries";
-import { useLoaderData } from "react-router-dom";
 
 const Diaries = () => {
   const { diaries } = useLoaderData();
 
   return (
-    <div>
+    <>
       <DiariesHeader />
       {diaries.length === 0 ? (
         <EmptyPage />
@@ -16,7 +17,8 @@ const Diaries = () => {
           ))}
         </div>
       )}
-    </div>
+      <Outlet />
+    </>
   );
 };
 

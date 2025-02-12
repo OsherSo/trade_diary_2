@@ -1,8 +1,10 @@
 import { Plus } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import { ActionBtn } from "../common";
 
 const DiariesHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex justify-between items-center mb-8">
       <div>
@@ -10,7 +12,7 @@ const DiariesHeader = () => {
         <p className="text-gray-600 mt-1">Manage your trading journals</p>
       </div>
       <ActionBtn
-        action={() => {}}
+        action={() => navigate("new")}
         style="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
       >
         <Plus className="w-5 h-5" />

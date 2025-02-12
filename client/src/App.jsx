@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
+import addDiaryAction from "./actions/addDiaryAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
@@ -15,6 +16,7 @@ import {
   DashboardLayout,
   Error,
   Diaries,
+  AddDiary,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -49,6 +51,13 @@ const router = createBrowserRouter([
             path: "diaries",
             element: <Diaries />,
             loader: diariesLoader,
+            children: [
+              {
+                path: "new",
+                element: <AddDiary />,
+                action: addDiaryAction,
+              },
+            ],
           },
         ],
       },

@@ -5,3 +5,4 @@ export { default as Landing } from "./Landing";
 export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 export { default as Diaries } from "./Diaries";
+export { default as AddDiary } from "./AddDiary";
