@@ -16,11 +16,12 @@ const validateRegisterInput = withValidationErrors([
 
 const validateLoginInput = withValidationErrors([
   body("email")
+    .trim()
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()
     .withMessage("Invalid email format"),
-  body("password").notEmpty().withMessage("Password is required"),
+  body("password").trim().notEmpty().withMessage("Password is required"),
 ]);
 
 export { validateRegisterInput, validateLoginInput };
