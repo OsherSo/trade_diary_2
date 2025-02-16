@@ -16,6 +16,7 @@ import { StatusCodes } from "http-status-codes";
 import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
 import diaryRouter from "./routes/diaryRouter.js";
+import tradeRouter from "./routes/tradeRouter.js";
 
 import { PORT, FAIL } from "./utils/constants.js";
 
@@ -50,6 +51,7 @@ app.use(express.json());
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/diaries", authenticateUser, diaryRouter);
+app.use("/api/v1/diaries/:diaryId/trades", authenticateUser, tradeRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./public", "index.html"));

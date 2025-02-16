@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import tradeRouter from "./tradeRouter.js";
+
 import {
   validateDiaryInput,
   validateDiaryUpdate,
@@ -14,6 +16,8 @@ import {
 } from "../controllers/diaryController.js";
 
 const diaryRouter = Router();
+
+diaryRouter.use("/:diaryId/trades", tradeRouter);
 
 diaryRouter.route("/").get(getAllDiaries).post(validateDiaryInput, createDiary);
 
