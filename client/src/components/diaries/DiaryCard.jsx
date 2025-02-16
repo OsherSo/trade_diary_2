@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Edit2, Trash2, Calendar, Book } from "lucide-react";
+import { Edit2, Trash2, Calendar, DollarSign, Globe } from "lucide-react";
+
 import { ActionBtn } from "../common";
 import ConfirmationDialog from "./ConfirmationDialog";
 
@@ -14,6 +15,13 @@ const DiaryCard = ({ diary }) => {
       month: "short",
       day: "numeric",
     });
+  };
+
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
   };
 
   const handleEdit = () => {
@@ -48,12 +56,28 @@ const DiaryCard = ({ diary }) => {
             </ActionBtn>
           </div>
         </div>
+
         <p className="text-gray-600 mb-4">
           {diary.description || "No description provided"}
         </p>
-        <div className="flex items-center text-gray-500">
-          <Book className="w-4 h-4 mr-1" />
-          <span>{diary.trades?.length || 0} trades</span>
+
+        <div className="space-y-2">
+          <div className="flex items-center text-gray-600">
+            <Globe className="w-4 h-4 mr-2" />
+            <span>{diary.platform}</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <DollarSign className="w-4 h-4 mr-2" />
+            <span>Initial Balance: {formatCurrency(diary.initialBalance)}</span>
+          </div>
+          {diary.currentBalance && (
+            <div className="flex items-center text-gray-600">
+              <DollarSign className="w-4 h-4 mr-2" />
+              <span>
+                Current Balance: {formatCurrency(diary.currentBalance)}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

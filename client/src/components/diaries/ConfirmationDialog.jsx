@@ -18,13 +18,13 @@ const ConfirmationDialog = ({ isOpen, onClose, diaryId, diaryName }) => {
               <AlertCircle className="w-6 h-6 text-red-600" />
             </div>
             <h2 className="text-xl font-semibold text-gray-900">
-              Delete Diary
+              Delete Trading Diary
             </h2>
           </div>
 
           <p className="text-gray-600 mb-6">
             Are you sure you want to delete &quot;{diaryName}&quot;? This action
-            cannot be undone.
+            cannot be undone and will delete all associated trades and records.
           </p>
 
           <div className="flex gap-3">

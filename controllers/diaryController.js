@@ -14,12 +14,11 @@ export const getAllDiaries = async (req, res) => {
 };
 
 export const getDiary = async (req, res) => {
-  const diary = await diaryModel
-    .findOne({
-      _id: req.params.id,
-      user: req.user.userId,
-    })
-    .populate("trades");
+  const diary = await diaryModel.findOne({
+    _id: req.params.id,
+    user: req.user.userId,
+  });
+  // .populate("trades");
 
   if (!diary) {
     return res
