@@ -1,5 +1,6 @@
 import { body } from "express-validator";
 
+import tradeModel from "../models/tradeModel.js";
 import withValidationErrors from "./withValidationErrors.js";
 
 const validateTradeInput = withValidationErrors([
@@ -136,8 +137,17 @@ const validateTradeUpdate = withValidationErrors([
     .optional()
     .isISO8601()
     .withMessage("Invalid exit date format")
-    .custom((value, { req }) => {
-      if (new Date(value) < new Date(req.body.entryDate)) {
+    .custom(async (value, { req }) => {
+      const trade = await tradeModel.findById(req.params.id);
+      if (!trade) {
+        throw new Error("Trade not found");
+      }
+
+      const entryDate = req.body.entryDate
+        ? new Date(req.body.entryDate)
+        : trade.entryDate;
+
+      if (new Date(value) < entryDate) {
         throw new Error("Exit date cannot be before entry date");
       }
       if (new Date(value) > new Date()) {
