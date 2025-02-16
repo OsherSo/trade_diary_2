@@ -10,6 +10,7 @@ import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
 import diariesLoader from "./loaders/diariesLoader";
 import singleDiaryLoader from "./loaders/singleDiaryLoader";
+import tradesLoader from "./loaders/tradesLoader";
 
 import {
   HomeLayout,
@@ -21,6 +22,7 @@ import {
   Diaries,
   AddDiary,
   EditDiary,
+  Trades,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -70,6 +72,11 @@ const router = createBrowserRouter([
               {
                 path: "delete/:id",
                 action: deleteDiaryAction,
+              },
+              {
+                path: ":id/trades",
+                element: <Trades />,
+                loader: tradesLoader,
               },
             ],
           },

@@ -7,3 +7,4 @@ export { default as Register } from "./Register";
 export { default as Diaries } from "./Diaries";
 export { default as AddDiary } from "./AddDiary";
 export { default as EditDiary } from "./EditDiary";
+export { default as Trades } from "./Trades";
