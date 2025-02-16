@@ -16,6 +16,15 @@ const DiarySchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    initialBalance: {
+      type: Number,
+      required: true,
+    },
+    platform: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     trades: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +38,14 @@ const DiarySchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
+
+DiarySchema.virtual("currentBalance").get(function () {
+  const profitLoss = this.trades.reduce(
+    (total, trade) => total + (trade.profitLoss || 0),
+    0,
+  );
+  return this.initialBalance + profitLoss;
+});
 
 DiarySchema.virtual("totalProfitLoss").get(function () {
   return this.trades.reduce(
