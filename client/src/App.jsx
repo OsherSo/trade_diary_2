@@ -5,6 +5,7 @@ import registerAction from "./actions/registerAction";
 import addDiaryAction from "./actions/addDiaryAction";
 import deleteDiaryAction from "./actions/deleteDiaryAction";
 import editDiaryAction from "./actions/editDiaryAction";
+import addTradeAction from "./actions/addTradeAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
@@ -23,6 +24,7 @@ import {
   AddDiary,
   EditDiary,
   Trades,
+  AddTrade,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -77,6 +79,13 @@ const router = createBrowserRouter([
                 path: ":id/trades",
                 element: <Trades />,
                 loader: tradesLoader,
+                children: [
+                  {
+                    path: "new",
+                    element: <AddTrade />,
+                    action: addTradeAction,
+                  },
+                ],
               },
             ],
           },
