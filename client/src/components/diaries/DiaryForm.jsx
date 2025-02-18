@@ -64,7 +64,7 @@ const DiaryForm = ({ onCancel, defaultValues = {} }) => {
           Cancel
         </button>
         <SubmitBtn
-          text="Create Diary"
+          text={defaultValues?.name ? "Save Changes" : "Create Diary"}
           style="flex-1 bg-blue-600 text-white py-2.5 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium disabled:bg-blue-400"
         />
       </div>
