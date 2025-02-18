@@ -1,8 +1,8 @@
 import { Book } from "lucide-react";
 import { useLoaderData, Outlet, useLocation } from "react-router-dom";
 
-import { EmptyPage } from "../components/common";
-import { DiariesHeader, DiaryCard } from "../components/diaries";
+import { EmptyPage, PageHeader } from "../components/common";
+import { DiaryCard } from "../components/diaries";
 
 const Diaries = () => {
   const { diaries } = useLoaderData();
@@ -14,7 +14,12 @@ const Diaries = () => {
     <>
       {showDiariesList ? (
         <>
-          <DiariesHeader />
+          <PageHeader
+            title="Trading Diaries"
+            description="Manage your trading journals"
+            actionLabel="New Diary"
+            actionPath="new"
+          />
           {diaries.length === 0 ? (
             <EmptyPage
               title="No diaries yet"

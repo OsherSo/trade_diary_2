@@ -7,3 +7,4 @@ export { default as BigSidebar } from "./BigSidebar";
 export { default as ActionBtn } from "./ActionBtn";
 export { default as EmptyPage } from "./EmptyPage";
 export { default as Modal } from "./Modal";
+export { default as PageHeader } from "./PageHeader";

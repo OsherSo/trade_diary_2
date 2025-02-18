@@ -2,9 +2,8 @@ import { LineChart, Info } from "lucide-react";
 import { useState } from "react";
 import { useLoaderData, Outlet, useLocation } from "react-router-dom";
 
-import { EmptyPage } from "../components/common";
+import { EmptyPage, PageHeader } from "../components/common";
 import {
-  TradesHeader,
   TradeCard,
   BalanceChart,
   TradeSymbolFilter,
@@ -20,11 +19,18 @@ const Trades = () => {
     ? trades.filter((trade) => trade.symbol === selectedSymbol)
     : trades;
 
+  const { name, description } = diary;
+
   return (
     <>
       {showTradesList ? (
         <div>
-          <TradesHeader diary={diary} />
+          <PageHeader
+            title={name}
+            description={description}
+            actionLabel="New Trade"
+            actionPath="new"
+          />
           {trades.length === 0 ? (
             <EmptyPage
               title="No trades yet"
