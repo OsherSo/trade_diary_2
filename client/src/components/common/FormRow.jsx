@@ -4,7 +4,11 @@ const FormRow = ({
   labelText,
   labelStyle,
   inputStyle,
+  step,
+  min,
+  max,
   defaultValue = "",
+  required = false,
 }) => {
   return (
     <div>
@@ -17,7 +21,10 @@ const FormRow = ({
         name={name}
         className={inputStyle}
         defaultValue={defaultValue}
-        required
+        step={step}
+        min={min}
+        max={max}
+        required={required}
       />
     </div>
   );

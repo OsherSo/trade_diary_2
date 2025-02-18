@@ -12,6 +12,20 @@ const AddTrade = () => {
     navigate(-1);
   };
 
+  const RequiredLabel = ({ children }) => (
+    <span className="flex items-center gap-1">
+      {children}
+      <span className="text-red-500">*</span>
+    </span>
+  );
+
+  const OptionalLabel = ({ children }) => (
+    <span className="flex items-center gap-1">
+      {children}
+      <span className="text-sm text-gray-500">(optional)</span>
+    </span>
+  );
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div
@@ -19,7 +33,7 @@ const AddTrade = () => {
         onClick={handleClose}
       />
       <div className="fixed inset-0 z-10 flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-xl shadow-xl w-full max-w-2xl transform transition-all duration-300 scale-100">
+        <div className="relative bg-white rounded-xl shadow-xl w-full max-w-2xl transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
           <button
             onClick={handleClose}
             className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
@@ -34,113 +48,162 @@ const AddTrade = () => {
               <p className="mt-1 text-gray-500">
                 Record a new trade in your trading journal
               </p>
+              <p className="mt-4 text-sm text-gray-600">
+                Fields marked with <span className="text-red-500">*</span> are
+                required
+              </p>
             </div>
 
             <Form method="post" className="space-y-6">
-              {/* Trade Type Selection */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Trade Type
-                </label>
-                <div className="flex gap-4">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="type"
-                      value="long"
-                      checked={tradeType === "long"}
-                      onChange={(e) => setTradeType(e.target.value)}
-                      className="mr-2"
-                    />
-                    Long
+              {/* Required Fields Section */}
+              <div className="space-y-6">
+                {/* Trade Type */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <RequiredLabel>Trade Type</RequiredLabel>
                   </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      name="type"
-                      value="short"
-                      checked={tradeType === "short"}
-                      onChange={(e) => setTradeType(e.target.value)}
-                      className="mr-2"
-                    />
-                    Short
-                  </label>
+                  <div className="flex gap-4">
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="type"
+                        value="long"
+                        checked={tradeType === "long"}
+                        onChange={(e) => setTradeType(e.target.value)}
+                        className="mr-2"
+                        required
+                      />
+                      Long
+                    </label>
+                    <label className="flex items-center">
+                      <input
+                        type="radio"
+                        name="type"
+                        value="short"
+                        checked={tradeType === "short"}
+                        onChange={(e) => setTradeType(e.target.value)}
+                        className="mr-2"
+                      />
+                      Short
+                    </label>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Symbol */}
+                  <FormRow
+                    type="text"
+                    name="symbol"
+                    labelText={<RequiredLabel>Symbol</RequiredLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required={true}
+                  />
+
+                  {/* Entry Date */}
+                  <FormRow
+                    type="date"
+                    name="entryDate"
+                    labelText={<RequiredLabel>Entry Date</RequiredLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required={true}
+                  />
+
+                  {/* Entry Price */}
+                  <FormRow
+                    type="number"
+                    name="entryPrice"
+                    labelText={<RequiredLabel>Entry Price</RequiredLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="0.01"
+                    min="0.01"
+                    required={true}
+                  />
+
+                  {/* Quantity */}
+                  <FormRow
+                    type="number"
+                    name="quantity"
+                    labelText={<RequiredLabel>Quantity</RequiredLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="1"
+                    min="1"
+                    required={true}
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormRow
-                  type="text"
-                  name="symbol"
-                  labelText="Symbol"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
+              {/* Optional Fields Section */}
+              <div className="space-y-6 pt-6 border-t border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900">
+                  Additional Details
+                </h3>
 
-                <FormRow
-                  type="datetime-local"
-                  name="entryDate"
-                  labelText="Entry Date & Time"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Exit Date */}
+                  <FormRow
+                    type="date"
+                    name="exitDate"
+                    labelText={<OptionalLabel>Exit Date</OptionalLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
 
-                <FormRow
-                  type="number"
-                  name="entryPrice"
-                  labelText="Entry Price"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  step="0.000001"
-                  min="0.000001"
-                />
+                  {/* Exit Price */}
+                  <FormRow
+                    type="number"
+                    name="exitPrice"
+                    labelText={<OptionalLabel>Exit Price</OptionalLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="0.01"
+                    min="0.01"
+                  />
 
-                <FormRow
-                  type="number"
-                  name="quantity"
-                  labelText="Quantity"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  step="0.000001"
-                  min="0.000001"
-                />
+                  {/* Stop Loss */}
+                  <FormRow
+                    type="number"
+                    name="stopLoss"
+                    labelText={<OptionalLabel>Stop Loss</OptionalLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="0.01"
+                    min="0.01"
+                  />
 
-                <FormRow
-                  type="number"
-                  name="stopLoss"
-                  labelText="Stop Loss"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  step="0.000001"
-                  min="0.000001"
-                />
+                  {/* Take Profit */}
+                  <FormRow
+                    type="number"
+                    name="profitTarget"
+                    labelText={<OptionalLabel>Take Profit</OptionalLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="0.01"
+                    min="0.01"
+                  />
 
-                <FormRow
-                  type="number"
-                  name="profitTarget"
-                  labelText="Take Profit"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  step="0.000001"
-                  min="0.000001"
-                />
+                  {/* Fees */}
+                  <FormRow
+                    type="number"
+                    name="fees"
+                    labelText={<OptionalLabel>Fees</OptionalLabel>}
+                    labelStyle="block text-sm font-medium text-gray-700 mb-1"
+                    inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    step="0.01"
+                    min="0"
+                  />
+                </div>
 
-                <FormRow
-                  type="number"
-                  name="fees"
-                  labelText="Fees"
-                  labelStyle="block text-sm font-medium text-gray-700 mb-1"
-                  inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  step="0.01"
-                  min="0"
-                />
-
-                <div className="md:col-span-2">
+                {/* Notes */}
+                <div>
                   <label
                     htmlFor="notes"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Notes
+                    <OptionalLabel>Notes</OptionalLabel>
                   </label>
                   <textarea
                     name="notes"
