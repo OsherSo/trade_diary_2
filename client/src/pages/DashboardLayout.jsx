@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { createContext, useContext, useState } from "react";
 import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 
@@ -22,9 +21,8 @@ const DashboardLayout = () => {
   };
 
   const logout = async () => {
-    navigate("/");
     await customFetch.get("/auth/logout");
-    toast.success("Logged out successfully");
+    navigate("/");
   };
 
   return (

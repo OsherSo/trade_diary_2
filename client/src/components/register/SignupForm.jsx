@@ -12,6 +12,7 @@ const SignupForm = () => {
           labelText="First Name"
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          required={true}
         />
         <FormRow
           type="text"
@@ -19,6 +20,7 @@ const SignupForm = () => {
           labelText="Last Name"
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          required={true}
         />
         <FormRow
           type="email"
@@ -26,6 +28,7 @@ const SignupForm = () => {
           labelText="Email Address"
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          required={true}
         />
         <FormRow
           type="password"
@@ -33,6 +36,7 @@ const SignupForm = () => {
           labelText="Password"
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          required={true}
         />
       </div>
 
