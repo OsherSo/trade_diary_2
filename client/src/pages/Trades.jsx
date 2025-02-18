@@ -1,13 +1,24 @@
 import { LineChart, Info } from "lucide-react";
+import { useState } from "react";
 import { useLoaderData, Outlet, useLocation } from "react-router-dom";
 
 import { EmptyPage } from "../components/common";
-import { TradesHeader, TradeCard, BalanceChart } from "../components/trades";
+import {
+  TradesHeader,
+  TradeCard,
+  BalanceChart,
+  TradeSymbolFilter,
+} from "../components/trades";
 
 const Trades = () => {
   const { trades, diary } = useLoaderData();
   const location = useLocation();
   const showTradesList = location.pathname.endsWith("/trades");
+  const [selectedSymbol, setSelectedSymbol] = useState(null);
+
+  const filteredTrades = selectedSymbol
+    ? trades.filter((trade) => trade.symbol === selectedSymbol)
+    : trades;
 
   return (
     <>
@@ -25,7 +36,7 @@ const Trades = () => {
             <>
               {trades.length >= 10 ? (
                 <BalanceChart
-                  trades={trades}
+                  trades={filteredTrades}
                   initialBalance={diary.initialBalance}
                 />
               ) : (
@@ -44,11 +55,26 @@ const Trades = () => {
                   </div>
                 </div>
               )}
+
+              <TradeSymbolFilter
+                trades={trades}
+                selectedSymbol={selectedSymbol}
+                onSymbolSelect={setSelectedSymbol}
+              />
+
               <div className="grid grid-cols-1 gap-6">
-                {trades.map((trade) => (
+                {filteredTrades.map((trade) => (
                   <TradeCard key={trade._id} trade={trade} />
                 ))}
               </div>
+
+              {selectedSymbol && filteredTrades.length === 0 && (
+                <div className="text-center py-8">
+                  <p className="text-gray-600">
+                    No trades found for symbol {selectedSymbol}
+                  </p>
+                </div>
+              )}
             </>
           )}
         </div>
