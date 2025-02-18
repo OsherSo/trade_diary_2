@@ -6,6 +6,7 @@ import addDiaryAction from "./actions/addDiaryAction";
 import deleteDiaryAction from "./actions/deleteDiaryAction";
 import editDiaryAction from "./actions/editDiaryAction";
 import addTradeAction from "./actions/addTradeAction";
+import deleteTradeAction from "./actions/deleteTradeAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
                     path: "new",
                     element: <AddTrade />,
                     action: addTradeAction,
+                  },
+                  {
+                    path: "delete/:tradeId",
+                    action: deleteTradeAction,
                   },
                 ],
               },
