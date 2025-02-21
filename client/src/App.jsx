@@ -7,12 +7,14 @@ import deleteDiaryAction from "./actions/deleteDiaryAction";
 import editDiaryAction from "./actions/editDiaryAction";
 import addTradeAction from "./actions/addTradeAction";
 import deleteTradeAction from "./actions/deleteTradeAction";
+import editTradeAction from "./actions/editTradeAction";
 
 import authLoader from "./loaders/authLoader";
 import dashboardLoader from "./loaders/dashboardLoader";
 import diariesLoader from "./loaders/diariesLoader";
 import singleDiaryLoader from "./loaders/singleDiaryLoader";
 import tradesLoader from "./loaders/tradesLoader";
+import singleTradeLoader from "./loaders/singleTradeLoader";
 
 import {
   HomeLayout,
@@ -26,6 +28,7 @@ import {
   EditDiary,
   Trades,
   AddTrade,
+  EditTrade,
 } from "./pages";
 
 const router = createBrowserRouter([
@@ -85,6 +88,12 @@ const router = createBrowserRouter([
                     path: "new",
                     element: <AddTrade />,
                     action: addTradeAction,
+                  },
+                  {
+                    path: "edit/:tradeId",
+                    element: <EditTrade />,
+                    action: editTradeAction,
+                    loader: singleTradeLoader,
                   },
                   {
                     path: "delete/:tradeId",

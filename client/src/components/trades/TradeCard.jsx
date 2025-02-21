@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import {
   TrendingUp,
   TrendingDown,
@@ -9,11 +9,13 @@ import {
   ArrowDownRight,
   Info,
   Trash2,
+  Edit2,
 } from "lucide-react";
 
 const TradeCard = ({ trade }) => {
   const [showNotes, setShowNotes] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const navigate = useNavigate();
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -35,6 +37,10 @@ const TradeCard = ({ trade }) => {
   const getProfitLossColor = (profitLoss) => {
     if (!profitLoss) return "text-gray-600";
     return profitLoss >= 0 ? "text-emerald-600" : "text-red-600";
+  };
+
+  const handleEdit = () => {
+    navigate(`edit/${trade._id}`);
   };
 
   const DeleteConfirmationDialog = () => {
@@ -122,13 +128,21 @@ const TradeCard = ({ trade }) => {
                 )}
               </div>
 
-              {/* Delete Button */}
-              <button
-                onClick={() => setShowDeleteConfirmation(true)}
-                className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleEdit}
+                  className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-200"
+                >
+                  <Edit2 className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setShowDeleteConfirmation(true)}
+                  className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

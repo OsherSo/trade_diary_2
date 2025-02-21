@@ -9,3 +9,4 @@ export { default as AddDiary } from "./AddDiary";
 export { default as EditDiary } from "./EditDiary";
 export { default as Trades } from "./Trades";
 export { default as AddTrade } from "./AddTrade";
+export { default as EditTrade } from "./EditTrade";
