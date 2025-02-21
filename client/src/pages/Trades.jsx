@@ -40,7 +40,7 @@ const Trades = () => {
             </EmptyPage>
           ) : (
             <>
-              {trades.length >= 10 ? (
+              {trades.length > 0 ? (
                 <BalanceChart
                   trades={filteredTrades}
                   initialBalance={diary.initialBalance}

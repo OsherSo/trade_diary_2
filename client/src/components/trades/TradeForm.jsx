@@ -52,8 +52,8 @@ const TradeForm = ({
           labelText={<RequiredLabel>Entry Price</RequiredLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          step="0.01"
-          min="0.01"
+          step="0.0001"
+          min="0.0001"
           defaultValue={defaultValues.entryPrice}
           required={true}
         />
@@ -85,8 +85,8 @@ const TradeForm = ({
           labelText={<OptionalLabel>Exit Price</OptionalLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          step="0.01"
-          min="0.01"
+          step="0.0001"
+          min="0.0001"
           defaultValue={defaultValues.exitPrice}
         />
 
@@ -96,8 +96,8 @@ const TradeForm = ({
           labelText={<OptionalLabel>Stop Loss</OptionalLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          step="0.01"
-          min="0.01"
+          step="0.0001"
+          min="0.0001"
           defaultValue={defaultValues.stopLoss}
         />
 
@@ -107,8 +107,8 @@ const TradeForm = ({
           labelText={<OptionalLabel>Take Profit</OptionalLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          step="0.01"
-          min="0.01"
+          step="0.0001"
+          min="0.0001"
           defaultValue={defaultValues.profitTarget}
         />
 
