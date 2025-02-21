@@ -1,5 +1,4 @@
 const TradeSymbolFilter = ({ trades, selectedSymbol, onSymbolSelect }) => {
-  // Get unique symbols from trades
   const symbols = [...new Set(trades.map((trade) => trade.symbol))].sort();
 
   return (

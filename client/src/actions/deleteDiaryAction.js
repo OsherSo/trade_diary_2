@@ -6,7 +6,6 @@ import customFetch from "../utils/customFetch";
 const deleteDiaryAction = async ({ params }) => {
   try {
     await customFetch.delete(`/diaries/${params.id}`);
-    toast.success("Diary deleted successfully");
   } catch (error) {
     toast.error(error.response.data.msg);
   }

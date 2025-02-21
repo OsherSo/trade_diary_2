@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom";
-import { FormRow, SubmitBtn } from "../common";
+import { FormRow, SubmitBtn, RequiredLabel } from "../common";
 
 const DiaryForm = ({ onCancel, defaultValues = {} }) => {
   return (
@@ -8,7 +8,7 @@ const DiaryForm = ({ onCancel, defaultValues = {} }) => {
         <FormRow
           type="text"
           name="name"
-          labelText="Diary Name"
+          labelText={<RequiredLabel>Diary Name</RequiredLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
           defaultValue={defaultValues.name}
@@ -18,7 +18,7 @@ const DiaryForm = ({ onCancel, defaultValues = {} }) => {
         <FormRow
           type="text"
           name="platform"
-          labelText="Trading Platform"
+          labelText={<RequiredLabel>Trading Platform</RequiredLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
           defaultValue={defaultValues.platform}
@@ -28,7 +28,7 @@ const DiaryForm = ({ onCancel, defaultValues = {} }) => {
         <FormRow
           type="number"
           name="initialBalance"
-          labelText="Initial Balance"
+          labelText={<RequiredLabel>Initial Balance</RequiredLabel>}
           labelStyle="block text-sm font-medium text-gray-700 mb-1"
           inputStyle="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
           step="0.01"

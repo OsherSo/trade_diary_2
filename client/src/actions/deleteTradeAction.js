@@ -6,7 +6,6 @@ import customFetch from "../utils/customFetch";
 const deleteTradeAction = async ({ params }) => {
   try {
     await customFetch.delete(`/diaries/${params.id}/trades/${params.tradeId}`);
-    toast.success("Trade deleted successfully");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
   }

@@ -9,7 +9,6 @@ const editDiaryAction = async ({ request, params }) => {
 
   try {
     await customFetch.patch(`/diaries/${params.id}`, data);
-    toast.success("Diary updated successfully");
     return redirect("/dashboard/diaries");
   } catch (error) {
     toast.error(error?.response?.data?.msg);

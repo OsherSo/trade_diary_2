@@ -8,7 +8,6 @@ const addDiaryAction = async ({ request }) => {
   const data = Object.fromEntries(formData);
   try {
     await customFetch.post("/diaries", data);
-    toast.success("Diary added successfully");
     return redirect("/dashboard/diaries");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
