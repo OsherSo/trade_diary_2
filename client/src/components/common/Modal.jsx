@@ -1,6 +1,13 @@
 import { X } from "lucide-react";
 
-const Modal = ({ isOpen, onClose, title, description, children }) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  title,
+  description,
+  children,
+  wide = false,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -10,7 +17,9 @@ const Modal = ({ isOpen, onClose, title, description, children }) => {
         onClick={onClose}
       />
       <div className="fixed inset-0 z-10 flex items-center justify-center p-4">
-        <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all duration-300 scale-100">
+        <div
+          className={`relative bg-white rounded-xl shadow-xl w-full ${wide ? "max-w-4xl" : "max-w-md"} transform transition-all duration-300 scale-100`}
+        >
           <button
             onClick={onClose}
             className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"

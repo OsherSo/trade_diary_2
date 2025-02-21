@@ -1,5 +1,4 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
-
 import { Modal } from "../components/common";
 import { TradeForm } from "../components/trades";
 
@@ -17,6 +16,7 @@ const EditTrade = () => {
       onClose={handleClose}
       title="Edit Trade"
       description="Update your trade details"
+      wide={true}
     >
       <TradeForm
         onCancel={handleClose}

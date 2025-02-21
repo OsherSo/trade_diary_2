@@ -2,8 +2,8 @@ import { RequiredLabel } from "../common";
 
 const TradeTypeSelector = ({ value, onChange }) => {
   return (
-    <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+    <div className="flex items-center gap-4">
+      <label className="block text-sm font-medium text-gray-700">
         <RequiredLabel>Trade Type</RequiredLabel>
       </label>
       <div className="flex gap-4">
