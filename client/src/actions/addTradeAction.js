@@ -58,7 +58,6 @@ const addTradeAction = async ({ request, params }) => {
   try {
     const processedData = processTradeData(formData);
     await customFetch.post(`/diaries/${params.id}/trades`, processedData);
-    toast.success("Trade added successfully");
     return redirect(`/dashboard/diaries/${params.id}/trades`);
   } catch (error) {
     toast.error(error?.response?.data?.msg);

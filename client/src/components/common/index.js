@@ -8,3 +8,5 @@ export { default as ActionBtn } from "./ActionBtn";
 export { default as EmptyPage } from "./EmptyPage";
 export { default as Modal } from "./Modal";
 export { default as PageHeader } from "./PageHeader";
+export { default as RequiredLabel } from "./RequiredLabel";
+export { default as OptionalLabel } from "./OptionalLabel";
